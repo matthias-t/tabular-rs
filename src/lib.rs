@@ -109,9 +109,9 @@ mod row;
 mod table;
 mod width_string;
 
-pub use error::{Error, Result};
-pub use row::Row;
-pub use table::Table;
+pub use crate::error::{Error, Result};
+pub use crate::row::Row;
+pub use crate::table::Table;
 
 #[cfg(test)]
 mod tests {

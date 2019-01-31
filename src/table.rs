@@ -1,7 +1,7 @@
-use column_spec::{parse_row_spec, row_spec_to_string, ColumnSpec};
-use error::Result;
-use row::{InternalRow, Row};
-use width_string::WidthString;
+use crate::column_spec::{parse_row_spec, row_spec_to_string, ColumnSpec};
+use crate::error::Result;
+use crate::row::{InternalRow, Row};
+use crate::width_string::WidthString;
 
 use std::fmt::{Debug, Display, Formatter};
 
@@ -143,7 +143,7 @@ impl Table {
         assert_eq!(cells.len(), self.n_columns);
 
         for (width, s) in self.column_widths.iter_mut().zip(cells.iter()) {
-            *width = ::std::cmp::max(*width, s.width());
+            *width = std::cmp::max(*width, s.width());
         }
 
         self.rows.push(InternalRow::Cells(cells));
@@ -210,7 +210,7 @@ impl Debug for Table {
     //   - row_spec_to_string
     //   - row.clone()
     // It doesn't need to do either.
-    fn fmt(&self, f: &mut Formatter) -> ::std::fmt::Result {
+    fn fmt(&self, f: &mut Formatter) -> std::fmt::Result {
         write!(f, "Table::new({:?})", row_spec_to_string(&self.format))?;
 
         if self.line_end != DEFAULT_LINE_END {
@@ -230,9 +230,8 @@ impl Debug for Table {
 }
 
 impl Display for Table {
-    fn fmt(&self, f: &mut Formatter) -> ::std::fmt::Result {
-        use column_spec::Alignment::*;
-        use column_spec::ColumnSpec::*;
+    fn fmt(&self, f: &mut Formatter) -> std::fmt::Result {
+        use crate::column_spec::{Alignment::*, ColumnSpec::*};
 
         let max_column_width = self.column_widths.iter().cloned().max().unwrap_or(0);
         let mut spaces = String::with_capacity(max_column_width);

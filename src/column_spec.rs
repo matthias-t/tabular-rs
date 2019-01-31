@@ -1,4 +1,4 @@
-use error::*;
+use crate::error::*;
 
 #[derive(Clone)]
 pub enum ColumnSpec {

@@ -182,7 +182,7 @@ impl Row {
 }
 
 impl Debug for Row {
-    fn fmt(&self, f: &mut Formatter) -> ::std::fmt::Result {
+    fn fmt(&self, f: &mut Formatter) -> std::fmt::Result {
         write!(f, "Row::from_cells(vec!{:?})", self.0)
     }
 }

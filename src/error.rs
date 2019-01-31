@@ -20,7 +20,7 @@ pub enum Error {
     UnexpectedCharacter(char),
 }
 
-impl ::std::error::Error for Error {
+impl std::error::Error for Error {
     fn description(&self) -> &str {
         match *self {
             Error::UnclosedColumnSpec(_) => "unclosed column specifier",
@@ -31,8 +31,8 @@ impl ::std::error::Error for Error {
     }
 }
 
-impl ::std::fmt::Display for Error {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+impl std::fmt::Display for Error {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match *self {
             Error::UnclosedColumnSpec(ref spec) => {
                 write!(f, "unclosed column specifier: {:?}", spec)
@@ -49,4 +49,4 @@ impl ::std::fmt::Display for Error {
 /// Type alias specializing `std::result::Result` with this crate’s [`Error`] enum.
 ///
 /// [`Error`]: error.Error.html
-pub type Result<T> = ::std::result::Result<T, Error>;
+pub type Result<T> = std::result::Result<T, Error>;
