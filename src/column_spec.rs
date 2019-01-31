@@ -40,8 +40,6 @@ pub fn row_spec_to_string(specs: &[ColumnSpec]) -> String {
 }
 
 pub fn parse_row_spec(spec: &str) -> Result<(Vec<ColumnSpec>, usize)> {
-    use self::ColumnSpec::*;
-
     let mut vec = Vec::new();
     let mut count = 0;
     let mut buf = String::new();
