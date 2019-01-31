@@ -88,29 +88,29 @@ impl Table {
     ///
     /// ```
     /// # use tabular::*;
-    ///         let mut table = Table::new("{:<}  {:>}");
-    ///         table
-    ///             .add_heading("./:")
-    ///             .add_row(Row::new().with_cell("Cargo.lock").with_cell(433))
-    ///             .add_row(Row::new().with_cell("Cargo.toml").with_cell(204))
-    ///             .add_heading("")
-    ///             .add_heading("src/:")
-    ///             .add_row(Row::new().with_cell("lib.rs").with_cell(10257))
-    ///             .add_heading("")
-    ///             .add_heading("target/:")
-    ///             .add_row(Row::new().with_cell("debug/").with_cell(672));
+    /// let mut table = Table::new("{:<}  {:>}");
+    /// table
+    ///     .add_heading("./:")
+    ///     .add_row(Row::new().with_cell("Cargo.lock").with_cell(433))
+    ///     .add_row(Row::new().with_cell("Cargo.toml").with_cell(204))
+    ///     .add_heading("")
+    ///     .add_heading("src/:")
+    ///     .add_row(Row::new().with_cell("lib.rs").with_cell(10257))
+    ///     .add_heading("")
+    ///     .add_heading("target/:")
+    ///     .add_row(Row::new().with_cell("debug/").with_cell(672));
     ///
-    ///         assert_eq!( format!("{}", table),
-    ///                     "./:\n\
-    ///                      Cargo.lock    433\n\
-    ///                      Cargo.toml    204\n\
-    ///                      \n\
-    ///                      src/:\n\
-    ///                      lib.rs      10257\n\
-    ///                      \n\
-    ///                      target/:\n\
-    ///                      debug/        672\n\
-    ///                      " );
+    /// assert_eq!(format!("\n{}", table), r#"
+    /// ./:
+    /// Cargo.lock    433
+    /// Cargo.toml    204
+    ///
+    /// src/:
+    /// lib.rs      10257
+    ///
+    /// target/:
+    /// debug/        672
+    /// "# );
     /// ```
     ///
     pub fn add_heading<S: Into<String>>(&mut self, heading: S) -> &mut Self {
@@ -171,9 +171,9 @@ impl Table {
     /// ```
     /// # use tabular::*;
     /// #[cfg(windows)]
-    /// const DEFAULT_LINE_END: &'static str = "\r\n";
+    /// const DEFAULT_LINE_END: &str = "\r\n";
     /// #[cfg(not(windows))]
-    /// const DEFAULT_LINE_END: &'static str = "\n";
+    /// const DEFAULT_LINE_END: &str = "\n";
     ///
     /// let table = Table::new("{:>} {:<}").set_line_end(DEFAULT_LINE_END)
     ///     .with_row(Row::new().with_cell("x").with_cell("x"))
