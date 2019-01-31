@@ -8,9 +8,9 @@
 //! use tabular::{Table, Row};
 //! use std::path::Path;
 //!
-//! fn ls(dir: &Path) -> ::std::io::Result<()> {
+//! fn ls(dir: &Path) -> std::io::Result<()> {
 //!     let mut table = Table::new("{:>}  {:<}{:<}  {:<}");
-//!     for entry_result in ::std::fs::read_dir(dir)? {
+//!     for entry_result in std::fs::read_dir(dir)? {
 //!         let entry    = entry_result?;
 //!         let metadata = entry.metadata()?;
 //!
